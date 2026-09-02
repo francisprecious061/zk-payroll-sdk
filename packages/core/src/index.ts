@@ -17,6 +17,82 @@ export * from "./core";
 export { PayrollError, PayrollServiceErrorCode, handleApiError } from "./errors";
 
 // ── Adapters Layer ──────────────────────────────────────────────────────────
+export { PayrollService } from "./payroll";
+export { PayrollContract } from "./contract";
+export { ZKProofGenerator } from "./crypto/proofs";
+export { SnarkjsProofGenerator } from "./crypto/SnarkjsProofGenerator";
+export { WorkerProofGenerator } from "./crypto/WorkerProofGenerator";
+export type { WorkerLike, WorkerProofOptions } from "./crypto/WorkerProofGenerator";
+export type { WorkerRequest, WorkerResponse, ProofProgressStage } from "./crypto/WorkerMessages";
+export {
+  ZkPayrollError,
+  NetworkError,
+  ProofGenerationError,
+  ContractExecutionError,
+  RpcTimeoutError,
+  InvalidResponseError,
+  ValidationError,
+  ContractErrorCode,
+  WalletError,
+  WalletRejectionError,
+  WalletErrorCode,
+  ReconciliationErrorCode,
+  toUserFriendlyError,
+  formatRedactedError,
+  DEFAULT_ERROR_MESSAGES,
+  mapRpcError,
+  PayrollError,
+  ErrorCategory,
+  ERROR_CODE_REGISTRY,
+  getErrorCategory,
+  isRetryableErrorCode,
+  getSuggestedMessage,
+  getErrorCodesByCategory,
+} from "./errors";
+export type {
+  ErrorContext,
+  ContractErrorCodeType,
+  WalletErrorCodeType,
+  ReconciliationErrorCodeType,
+  UserFriendlyError,
+  FormattedError,
+  ErrorMessageOverrides,
+  ErrorCategoryType,
+  ErrorCodeEntry,
+} from "./errors";
+export type {
+  ClientConfig,
+  RetryPolicyConfig,
+  FeatureFlagsConfig,
+  ConfigValidationErrorDetail,
+  ConfigValidationResult,
+  ConfigMigrationWarning,
+  ConfigMigrationResult,
+} from "./config";
+export {
+  DEFAULT_CONFIG,
+  ConfigPresets,
+  ConfigBuilder,
+  validateConfig,
+  assertValidConfig,
+  migrateConfig,
+  detectDeprecatedConfigFields,
+} from "./config";
+export * from "./cache";
+export * from "./types";
+export * from "./progress";
+export {
+  IdempotencyRegistry,
+  createPaymentIdempotencyKey,
+  createPayrollIdempotencyKey,
+} from "./core/idempotency";
+export type { PayrollIdempotencyKeyInput, PaymentIdempotencyKeyInput } from "./core/idempotency";
+export { Semaphore } from "./core/concurrency";
+export * from "./crypto/IProofGenerator";
+export * from "./proofs/freshness";
+export { resolveProofConfig, resolveProofConfigFromEnv } from "./crypto/ProofConfigResolver";
+export type { ProofConfigResolverOptions } from "./crypto/ProofConfigResolver";
+// Keep backward compatibility with existing adapters barrel export
 export * from "./adapters";
 
 // ── Logging ─────────────────────────────────────────────────────────────────
