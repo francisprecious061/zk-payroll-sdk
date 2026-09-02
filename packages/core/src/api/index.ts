@@ -11,6 +11,7 @@ export {
 export type {
   ClientConfig,
   RetryPolicyConfig,
+  RetryBudgetsConfig,
   FeatureFlagsConfig,
   ConfigValidationErrorDetail,
   ConfigValidationResult,
