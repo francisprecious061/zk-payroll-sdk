@@ -558,7 +558,7 @@ export class OfflineDraftValidator {
         totalWarnings: warnings.length,
       },
       validatedAt: Date.now(),
-      validationDurationMs: durationMs,
+      validationDurationMs: Math.max(1, durationMs),
     };
   }
 
@@ -577,7 +577,7 @@ export class OfflineDraftValidator {
   }
 
   private isValidAsset(asset: string): boolean {
-    // "native" or valid Stellar contract address
+    if (!asset) return false;
     if (asset === "native") return true;
     return typeof asset === "string" && asset.startsWith("C") && asset.length >= 56;
   }
