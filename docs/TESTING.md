@@ -564,6 +564,21 @@ mockEnv.expectInvoke("getBalance").toReturn("1000");
 mockEnv.expectInvoke("getBalance").toReturn(1000n);
 ```
 
+## Edge Payroll Scenario Fixtures
+
+For difficult payroll states (expired reservations, compliance holds, active
+disputes, stale drafts, network mismatches, duplicate releases), the SDK ships
+deterministic, privacy-safe fixtures. Import them directly:
+
+```ts
+import { createExpiredReservationFixture } from "@zk-payroll/core";
+
+const { reservation, referenceTimestamp } = createExpiredReservationFixture().data;
+```
+
+See [Edge Payroll Scenario Fixtures](./EDGE_FIXTURES.md) for the full scenario
+list, import examples, determinism guarantees, and stability tests.
+
 ## Next Steps
 
 - Explore the [API documentation](./API.md)
